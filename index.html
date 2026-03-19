@@ -135,56 +135,23 @@ input:focus{
 
 <div class="title">百万单</div>
 
-<div class="card">
-<div>300万</div>
-<div class="price">RM3</div>
 <div class="btn" onclick="selectOrder('300万','RM3'); showForm()">下单</div>
-</div>
 
+<div class="btn" onclick="selectOrder('600万','RM6'); showForm()">下单</div>
 
-<div class="card">
-<div>600万</div>
-<div class="price">RM6</div>
-<div class="btn" onclick="selectOrder('600万','RM6'); showForm('600万')">下单</div>
-</div>
-
-<div class="card">
-<div>900万</div>
-<div class="price">RM9</div>
-<div class="btn" onclick="selectOrder('900万','RM9'); showForm('900万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('900万','RM9'); showForm()">下单</div>
 
 <div class="title">千万单</div>
 
-<div class="card">
-<div>1000万</div>
-<div class="price">RM10</div>
-<div class="btn"onclick="selectOrder('1000万','RM10'); showForm('1000万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('1000万','RM10'); showForm()">下单</div>
 
-<div class="card">
-<div>2000万</div>
-<div class="price">RM28</div>
-<div class="btn"onclick="selectOrder('2000万 RM28')；showForm('2000万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('2000万','RM28'); showForm()">下单</div>
 
-<div class="card">
-<div>4000万</div>
-<div class="price">RM35</div>
-<div class="btn"onclick="selectOrder('4000万 RM35')；showForm('4000万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('4000万','RM35'); showForm()">下单</div>
 
-<div class="card">
-<div>6000万</div>
-<div class="price">RM50</div>
-<div class="btn"onclick="selectOrder('6000万 RM50')；showForm('6000万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('6000万','RM50'); showForm()">下单</div>
 
-<div class="card">
-<div>8000万</div>
-<div class="price">RM70</div>
-<div class="btn"onclick="selectOrder('8000万 RM70')；showForm('8000万')">下单</div>
-</div>
+<div class="btn" onclick="selectOrder('8000万','RM70'); showForm()">下单</div>
 
 <div class="title">赌狗单（无累计无上限）</div>
 
@@ -285,10 +252,6 @@ let currentPrice = "";
 function selectOrder(order, price){
     selectedProduct = order;
     currentPrice = price;
-
-    document.getElementById("order").value = order;
-    document.getElementById("price").value = price;
-}
 
 function showForm(){
     document.getElementById("orderForm").style.display = "block";
