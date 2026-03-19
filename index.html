@@ -3,40 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <title>YS电竞点单系统</title>
+
 <style>
 body{
   margin:0;
-  font-family:Arial;
   background:#0f0f0f;
   color:#fff;
-  text-align:center;
+  font-family:Arial;
 }
 h1{
-  background:linear-gradient(45deg,#d4af37,#000);
+  text-align:center;
   padding:15px;
+  background:linear-gradient(45deg,#d4af37,#000);
 }
 .box{
-  margin:20px;
-  padding:20px;
+  margin:15px;
+  padding:15px;
   border:1px solid #d4af37;
   border-radius:10px;
 }
 select,input{
+  width:100%;
   padding:10px;
-  margin:10px;
-  width:80%;
+  margin-top:10px;
 }
 button{
-  padding:10px 20px;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
   background:#d4af37;
   border:none;
-  color:#000;
   font-weight:bold;
 }
 .result{
-  margin-top:15px;
-  font-size:20px;
+  margin-top:10px;
   color:#d4af37;
+  font-size:18px;
+}
+.order{
+  border-bottom:1px solid #333;
+  padding:5px 0;
 }
 </style>
 </head>
@@ -46,44 +52,93 @@ button{
 <h1>YS电竞点单系统</h1>
 
 <div class="box">
-  <h2>选择服务</h2>
+  <h3>下单</h3>
 
   <select id="service">
-    <option value="3">300万 - RM3</option>
-    <option value="6">600万 - RM6</option>
-    <option value="9">900万 - RM9</option>
-    <option value="10">1000万 - RM10</option>
-    <option value="28">2000万 - RM28</option>
-    <option value="35">4000万 - RM35</option>
-    <option value="50">6000万 - RM50</option>
-    <option value="70">8000万 - RM70</option>
-    <option value="11.88">金条2根 - RM11.88</option>
-    <option value="18.88">金条4根 - RM18.88</option>
-    <option value="28.88">金条6根 - RM28.88</option>
+    <option value="300万|3">300万 - RM3</option>
+    <option value="600万|6">600万 - RM6</option>
+    <option value="900万|9">900万 - RM9</option>
+    <option value="1000万|10">1000万 - RM10</option>
+    <option value="2000万|28">2000万 - RM28</option>
+    <option value="4000万|35">4000万 - RM35</option>
+    <option value="6000万|50">6000万 - RM50</option>
+    <option value="8000万|70">8000万 - RM70</option>
+    <option value="金条2|11.88">金条2根 - RM11.88</option>
+    <option value="金条4|18.88">金条4根 - RM18.88</option>
+    <option value="金条6|28.88">金条6根 - RM28.88</option>
   </select>
 
   <input type="number" id="qty" placeholder="输入数量">
 
-  <br>
-
-  <button onclick="calc()">计算价格</button>
+  <button onclick="addOrder()">提交订单</button>
 
   <div class="result" id="result"></div>
 </div>
 
 <div class="box">
-  <h2>扫码联系下单</h2>
-  <p>客服：105997283</p>
-  <p>（把你的二维码放这里）</p>
+  <h3>收入统计</h3>
+  <div id="total"></div>
+</div>
+
+<div class="box">
+  <h3>订单记录</h3>
+  <div id="orders"></div>
+</div>
+
+<div class="box">
+  <h3>联系客服</h3>
+  <button onclick="contact()">点击联系</button>
 </div>
 
 <script>
-function calc(){
-  let price = document.getElementById("service").value;
-  let qty = document.getElementById("qty").value;
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+function addOrder(){
+  let val = document.getElementById("service").value.split("|");
+  let name = val[0];
+  let price = parseFloat(val[1]);
+  let qty = parseInt(document.getElementById("qty").value);
+
+  if(!qty){
+    alert("请输入数量");
+    return;
+  }
+
   let total = price * qty;
-  document.getElementById("result").innerText = "总价：RM " + total;
+
+  let order = {
+    name:name,
+    qty:qty,
+    total:total,
+    time:new Date().toLocaleString()
+  };
+
+  orders.push(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  document.getElementById("result").innerText = "订单成功 RM " + total;
+
+  showOrders();
 }
+
+function showOrders(){
+  let list = document.getElementById("orders");
+  let totalMoney = 0;
+  list.innerHTML = "";
+
+  orders.forEach(o=>{
+    totalMoney += o.total;
+    list.innerHTML += `<div class="order">${o.time} | ${o.name} x${o.qty} = RM${o.total}</div>`;
+  });
+
+  document.getElementById("total").innerText = "总收入：RM " + totalMoney;
+}
+
+function contact(){
+  window.location.href = "https://wa.me/60105997283";
+}
+
+showOrders();
 </script>
 
 </body>
