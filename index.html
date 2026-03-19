@@ -2,92 +2,108 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>YS电竞点单系统</title>
+<title>YS电竞</title>
 
 <style>
 body{
   margin:0;
-  background:#0f0f0f;
-  color:#fff;
   font-family:Arial;
+  background:linear-gradient(180deg,#000,#111);
+  color:#fff;
 }
 h1{
   text-align:center;
-  padding:15px;
-  background:linear-gradient(45deg,#d4af37,#000);
+  padding:20px;
+  color:#d4af37;
+  font-size:28px;
+  letter-spacing:2px;
 }
-.box{
-  margin:15px;
+.container{
   padding:15px;
+}
+.card{
+  background:#111;
   border:1px solid #d4af37;
-  border-radius:10px;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 0 10px rgba(212,175,55,0.3);
 }
 select,input{
   width:100%;
-  padding:10px;
+  padding:12px;
   margin-top:10px;
+  background:#000;
+  border:1px solid #d4af37;
+  color:#fff;
+  border-radius:8px;
 }
 button{
   width:100%;
   padding:12px;
-  margin-top:10px;
-  background:#d4af37;
+  margin-top:12px;
+  background:linear-gradient(45deg,#d4af37,#ffd700);
   border:none;
   font-weight:bold;
+  border-radius:8px;
 }
 .result{
   margin-top:10px;
-  color:#d4af37;
-  font-size:18px;
+  color:#ffd700;
 }
 .order{
   border-bottom:1px solid #333;
   padding:5px 0;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>YS电竞点单系统</h1>
+<h1>YS电竞俱乐部</h1>
 
-<div class="box">
-  <h3>下单</h3>
+<div class="container">
 
-  <select id="service">
-    <option value="300万|3">300万 - RM3</option>
-    <option value="600万|6">600万 - RM6</option>
-    <option value="900万|9">900万 - RM9</option>
-    <option value="1000万|10">1000万 - RM10</option>
-    <option value="2000万|28">2000万 - RM28</option>
-    <option value="4000万|35">4000万 - RM35</option>
-    <option value="6000万|50">6000万 - RM50</option>
-    <option value="8000万|70">8000万 - RM70</option>
-    <option value="金条2|11.88">金条2根 - RM11.88</option>
-    <option value="金条4|18.88">金条4根 - RM18.88</option>
-    <option value="金条6|28.88">金条6根 - RM28.88</option>
-  </select>
+<div class="card">
+<h3>🎮 点单区</h3>
 
-  <input type="number" id="qty" placeholder="输入数量">
+<select id="service">
+<option value="300万|3">300万 - RM3</option>
+<option value="600万|6">600万 - RM6</option>
+<option value="900万|9">900万 - RM9</option>
+<option value="1000万|10">1000万 - RM10</option>
+<option value="2000万|28">2000万 - RM28</option>
+<option value="4000万|35">4000万 - RM35</option>
+<option value="6000万|50">6000万 - RM50</option>
+<option value="8000万|70">8000万 - RM70</option>
+<option value="金条2|11.88">金条2根 - RM11.88</option>
+<option value="金条4|18.88">金条4根 - RM18.88</option>
+<option value="金条6|28.88">金条6根 - RM28.88</option>
+</select>
 
-  <button onclick="addOrder()">提交订单</button>
+<input type="number" id="qty" placeholder="输入数量">
 
-  <div class="result" id="result"></div>
+<button onclick="addOrder()">提交订单</button>
+
+<div class="result" id="result"></div>
 </div>
 
-<div class="box">
-  <h3>收入统计</h3>
-  <div id="total"></div>
+<div class="card">
+<h3>💰 收入统计</h3>
+<div id="total"></div>
 </div>
 
-<div class="box">
-  <h3>订单记录</h3>
-  <div id="orders"></div>
+<div class="card">
+<h3>📋 订单记录</h3>
+<div id="orders"></div>
 </div>
 
-<div class="box">
-  <h3>联系客服</h3>
-  <button onclick="contact()">点击联系</button>
+<div class="card">
+<h3>📞 联系客服</h3>
+<button onclick="contact()">点击联系</button>
+</div>
+
 </div>
 
 <script>
@@ -116,7 +132,7 @@ function addOrder(){
   orders.push(order);
   localStorage.setItem("orders", JSON.stringify(orders));
 
-  document.getElementById("result").innerText = "订单成功 RM " + total;
+  document.getElementById("result").innerText = "下单成功 RM " + total;
 
   showOrders();
 }
