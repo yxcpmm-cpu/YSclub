@@ -293,13 +293,7 @@ function selectOrder(order, price){
     document.getElementById("price").value = price;
 }
 
-function showForm(product){
-    selectedProduct = product;
-    let selectedEl = document.getElementById("selected");
-if(selectedEl){
-    selectedEl.innerText = product;
-}
-
+function showForm(){
     document.getElementById("orderForm").style.display = "block";
     window.scrollTo(0, document.body.scrollHeight);
 }
