@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>YS电竞</title>
+<title>YS电竞点单</title>
 
 <style>
 body{
@@ -14,42 +14,31 @@ body{
 h1{
   text-align:center;
   color:#d4af37;
-  padding:20px;
+  padding:15px;
 }
-.container{padding:15px;}
-.card{
-  background:#111;
+.box{
+  margin:15px;
+  padding:15px;
   border:1px solid #d4af37;
   border-radius:10px;
-  padding:15px;
-  margin-bottom:15px;
 }
-button{
+button,input,select{
   width:100%;
   padding:12px;
   margin-top:10px;
+}
+button{
   background:#d4af37;
   border:none;
-}
-input,select{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  background:#000;
-  color:#fff;
-  border:1px solid #d4af37;
 }
 </style>
 </head>
 
 <body>
 
-<h1>YS电竞系统</h1>
+<h1>点单系统</h1>
 
-<div class="container">
-
-<div class="card">
-<h3>点单</h3>
+<div class="box">
 
 <select id="service">
 <option value="3">300万 - RM3</option>
@@ -65,85 +54,27 @@ input,select{
 <option value="28.88">金条6根 - RM28.88</option>
 </select>
 
-<input type="number" id="qty" placeholder="数量">
+<input id="qty" type="number" placeholder="数量">
 
-<button onclick="addOrder()">提交订单</button>
+<button onclick="add()">提交订单</button>
 
 <p id="result"></p>
-</div>
-
-<div class="card">
-<h3>收入统计</h3>
-<p id="total"></p>
-<p id="count"></p>
-</div>
-
-<div class="card">
-<h3>联系客服</h3>
-<button onclick="contact()">联系</button>
-</div>
 
 </div>
 
 <script>
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let orders = JSON.parse(localStorage.getItem("orders"))||[];
 
-function addOrder(){
-  let price = parseFloat(document.getElementById("service").value);
-  let qty = parseInt(document.getElementById("qty").value);
+function add(){
+  let price=document.getElementById("service").value;
+  let qty=document.getElementById("qty").value;
 
-  if(!qty){alert("输入数量");return;}
+  let total=price*qty;
 
-  let total = price * qty;
-
-  let order = {price,qty,total,time:new Date().toLocaleString()};
-  orders.push(order);
-
+  orders.push({total:total,time:new Date().toLocaleString()});
   localStorage.setItem("orders",JSON.stringify(orders));
 
   document.getElementById("result").innerText="成功 RM "+total;
-
-  update();
-}
-
-function update(){
-  let total=0;
-  orders.forEach(o=>total+=o.total);
-
-  document.getElementById("total").innerText="总收入 RM "+total;
-  document.getElementById("count").innerText="订单数 "+orders.length;
-}
-
-function contact(){
-  window.location.href="https://wa.me/60105997283";
-}
-
-update();
-
-// 长按进入后台
-document.body.addEventListener("mousedown",()=>{
-  let timer=setTimeout(showAdmin,2000);
-  document.body.onmouseup=()=>clearTimeout(timer);
-});
-
-function showAdmin(){
-  let txt="订单列表:\n";
-  orders.forEach(o=>{
-    txt+=`${o.time} RM${o.total}\n`;
-  });
-
-  if(confirm(txt+"\n导出数据？")){
-    let data="时间,金额\n";
-    orders.forEach(o=>{
-      data+=`${o.time},${o.total}\n`;
-    });
-
-    let blob=new Blob([data]);
-    let a=document.createElement("a");
-    a.href=URL.createObjectURL(blob);
-    a.download="orders.csv";
-    a.click();
-  }
 }
 </script>
 
