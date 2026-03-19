@@ -8,75 +8,120 @@
 <style>
 body{
     margin:0;
-    background:#000;
+    background:linear-gradient(180deg,#000,#0a0a0a);
     color:#fff;
     font-family:Arial;
 }
 
+/* 顶部图 */
 .header img{
     width:100%;
+    filter:brightness(0.8);
 }
 
+/* 菜单 */
 .menu{
     display:flex;
     justify-content:space-around;
-    padding:10px;
+    padding:12px;
     font-size:18px;
+    background:#0d0d0d;
+    border-bottom:1px solid #222;
 }
 
+/* 标题 */
 .title{
     color:#FFD700;
-    font-size:26px;
+    font-size:28px;
     margin:20px;
+    font-weight:bold;
 }
 
+/* 卡片 */
 .card{
-    background:#1a1a1a;
+    background:linear-gradient(145deg,#111,#1c1c1c);
     margin:15px;
     padding:20px;
-    border-radius:15px;
+    border-radius:18px;
+    box-shadow:0 0 10px rgba(255,215,0,0.1);
+    transition:0.3s;
 }
 
+.card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 20px rgba(255,215,0,0.3);
+}
+
+/* 价格 */
 .price{
     color:#FFD700;
-    font-size:20px;
+    font-size:22px;
+    margin-top:5px;
 }
 
+/* 按钮 */
 .btn{
-    background:#FFD700;
-    color:#000;
-    padding:10px;
-    text-align:center;
-    border-radius:10px;
-    margin-top:10px;
-    cursor:pointer;
-}
-
-.form{
-    display:none;
-    background:#111;
-    margin:15px;
-    padding:20px;
-    border-radius:15px;
-}
-
-input{
-    width:100%;
-    padding:10px;
-    margin:10px 0;
-    border:none;
-    border-radius:8px;
-}
-
-.submit{
-    background:#FFD700;
+    background:linear-gradient(90deg,#FFD700,#ffcc00);
     color:#000;
     padding:12px;
     text-align:center;
-    border-radius:10px;
+    border-radius:12px;
+    margin-top:12px;
     cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.btn:active{
+    transform:scale(0.95);
+}
+
+/* 表单 */
+.form{
+    display:none;
+    background:linear-gradient(145deg,#111,#1a1a1a);
+    margin:15px;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 0 15px rgba(255,215,0,0.15);
+}
+
+/* 输入框 */
+input{
+    width:100%;
+    padding:12px;
+    margin:12px 0;
+    border:none;
+    border-radius:10px;
+    background:#0d0d0d;
+    color:#fff;
+    outline:none;
+    font-size:15px;
+    box-shadow:inset 0 0 5px rgba(255,255,255,0.1);
+}
+
+input:focus{
+    box-shadow:0 0 8px rgba(255,215,0,0.6);
+}
+
+/* 提交按钮 */
+.submit{
+    background:linear-gradient(90deg,#FFD700,#ffcc00);
+    color:#000;
+    padding:14px;
+    text-align:center;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:10px;
+    transition:0.2s;
+}
+
+.submit:active{
+    transform:scale(0.95);
 }
 </style>
+
 </head>
 
 <body>
