@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YS电竞点单系统</title>
+<title>YS电竞点单</title>
 
 <style>
 body{
@@ -13,76 +13,63 @@ body{
     color:#fff;
 }
 
-/* 顶部封面 */
+/* 顶部 */
 .header{
-    height:240px;
+    height:200px;
     background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
     url('https://images.unsplash.com/photo-1542751371-adc38448a05e') center/cover;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
 }
 
 .header h1{
     color:#FFD700;
-    font-size:30px;
     margin:0;
 }
 .header p{
     color:#ccc;
+}
+
+/* 客服按钮 */
+.service{
+    margin-top:10px;
+    padding:8px 18px;
+    background:#25D366;
+    border-radius:20px;
+    color:#fff;
+    text-decoration:none;
     font-size:14px;
 }
 
-/* 分类按钮 */
-.tabs{
-    display:flex;
-    justify-content:center;
-    margin-top:-25px;
-}
-.tabs button{
-    margin:5px;
-    padding:10px 18px;
-    border:none;
-    border-radius:20px;
-    background:#1a1a1a;
-    color:#aaa;
-}
-.tabs .active{
-    background:#FFD700;
-    color:#000;
-}
-
-/* 区块标题 */
-.section-title{
+/* 分组标题 */
+.group{
     padding:15px;
-    font-size:18px;
-    color:#FFD700;
 }
 
-/* 商品列表 */
+.group h2{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+/* 卡片 */
 .container{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
-    padding:10px;
 }
 
-/* 卡片 */
 .card{
-    background:linear-gradient(145deg,#1a1a1a,#111);
-    border-radius:15px;
+    background:#1a1a1a;
+    border-radius:12px;
     overflow:hidden;
-    box-shadow:0 0 15px rgba(255,215,0,0.2);
-    transition:0.2s;
-}
-.card:hover{
-    transform:scale(1.02);
+    box-shadow:0 0 10px rgba(255,215,0,0.2);
 }
 
 .card img{
     width:100%;
-    height:120px;
+    height:110px;
     object-fit:cover;
 }
 
@@ -90,14 +77,8 @@ body{
     padding:10px;
 }
 
-.title{
-    font-size:14px;
-}
-
 .price{
     color:#FFD700;
-    font-size:18px;
-    margin-top:5px;
 }
 
 .buy{
@@ -105,10 +86,9 @@ body{
     margin-top:8px;
     padding:8px;
     border:none;
-    border-radius:10px;
-    background:linear-gradient(90deg,#FFD700,#ffb700);
+    background:#FFD700;
     color:#000;
-    font-weight:bold;
+    border-radius:8px;
 }
 
 /* 弹窗 */
@@ -125,83 +105,91 @@ body{
 .modal.active{
     bottom:0;
 }
-
 input{
     width:100%;
     padding:10px;
     margin-top:10px;
+    border-radius:8px;
     border:none;
-    border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- 顶部 -->
 <div class="header">
     <h1>YS电竞点单</h1>
-    <p>安全稳定 · 极速发货</p>
+    <p>安全稳定 · 快速发货</p>
+
+    <!-- 客服 -->
+    <a class="service" href="https://wa.me/60105997283">联系客服</a>
 </div>
 
-<div class="tabs">
-    <button class="active">百万单</button>
-    <button>千万单</button>
+<!-- 百万单 -->
+<div class="group">
+    <h2>🔥 百万单</h2>
+
+    <div class="container">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
+            <div class="info">
+                <div>300万</div>
+                <div class="price">RM3</div>
+                <button class="buy" onclick="order('300万 RM3')">下单</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
+            <div class="info">
+                <div>600万</div>
+                <div class="price">RM6</div>
+                <button class="buy" onclick="order('600万 RM6')">下单</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
+            <div class="info">
+                <div>900万</div>
+                <div class="price">RM9</div>
+                <button class="buy" onclick="order('900万 RM9')">下单</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<div class="section-title">🔥 热门套餐</div>
+<!-- 千万单 -->
+<div class="group">
+    <h2>💎 千万单</h2>
 
-<div class="container">
+    <div class="container">
 
-    <!-- 百万单 -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
-        <div class="info">
-            <div class="title">300万金币</div>
-            <div class="price">RM3</div>
-            <button class="buy" onclick="order('300万 RM3')">立即下单</button>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+            <div class="info">
+                <div>1000万</div>
+                <div class="price">RM10</div>
+                <button class="buy" onclick="order('1000万 RM10')">下单</button>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
-        <div class="info">
-            <div class="title">600万金币</div>
-            <div class="price">RM6</div>
-            <button class="buy" onclick="order('600万 RM6')">立即下单</button>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+            <div class="info">
+                <div>2000万</div>
+                <div class="price">RM28</div>
+                <button class="buy" onclick="order('2000万 RM28')">下单</button>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee">
-        <div class="info">
-            <div class="title">900万金币</div>
-            <div class="price">RM9</div>
-            <button class="buy" onclick="order('900万 RM9')">立即下单</button>
-        </div>
     </div>
-
-    <!-- 千万单 -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
-        <div class="info">
-            <div class="title">1000万金币</div>
-            <div class="price">RM10</div>
-            <button class="buy" onclick="order('1000万 RM10')">立即下单</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
-        <div class="info">
-            <div class="title">2000万金币</div>
-            <div class="price">RM28</div>
-            <button class="buy" onclick="order('2000万 RM28')">立即下单</button>
-        </div>
-    </div>
-
 </div>
 
-<!-- 下单弹窗 -->
+<!-- 弹窗 -->
 <div id="modal" class="modal">
     <h3>确认订单</h3>
     <p id="orderText"></p>
@@ -219,7 +207,7 @@ function order(text){
 
 function submitOrder(){
     let uid = document.getElementById("uid").value;
-    alert("下单成功！请联系客服付款\nID："+uid);
+    window.location.href = "https://wa.me/60105997283?text=我要下单："+document.getElementById("orderText").innerText+" ID:"+uid;
 }
 </script>
 
