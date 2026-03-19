@@ -296,7 +296,16 @@ function submitOrder(){
 
             let msg = `订单:%0A商品:${selectedProduct}%0A数量:${qty}%0A总价:RM${price*qty}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
 
-            window.open("https://wa.me/601165268227?text=" + msg);
+ submitOrder({
+  游戏ID: id,
+  名字: name,
+  联系方式: contact,
+  商品: selectedProduct,
+  数量: qty,
+  总价: "RM" + (price * qty),
+  时间: new Date().toLocaleString()
+});
+         window.open("https://wa.me/601165268227?text=" + msg);
 
             document.getElementById("gameId").value="";
             document.getElementById("name").value="";
