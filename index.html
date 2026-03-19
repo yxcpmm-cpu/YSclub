@@ -1,10 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YS电竞点单系统</title>
+<meta charset="UTF-8">
+<title>YS电竞点单系统</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0f0f0f;
+  color:#fff;
+  text-align:center;
+}
+h1{
+  background:linear-gradient(45deg,#d4af37,#000);
+  padding:15px;
+}
+.box{
+  margin:20px;
+  padding:20px;
+  border:1px solid #d4af37;
+  border-radius:10px;
+}
+select,input{
+  padding:10px;
+  margin:10px;
+  width:80%;
+}
+button{
+  padding:10px 20px;
+  background:#d4af37;
+  border:none;
+  color:#000;
+  font-weight:bold;
+}
+.result{
+  margin-top:15px;
+  font-size:20px;
+  color:#d4af37;
+}
+</style>
 </head>
+
 <body>
-  <h1>YS电竞点单系统</h1>
-  <p>系统正在搭建中...</p>
+
+<h1>YS电竞点单系统</h1>
+
+<div class="box">
+  <h2>选择服务</h2>
+
+  <select id="service">
+    <option value="3">300万 - RM3</option>
+    <option value="6">600万 - RM6</option>
+    <option value="9">900万 - RM9</option>
+    <option value="10">1000万 - RM10</option>
+    <option value="28">2000万 - RM28</option>
+    <option value="35">4000万 - RM35</option>
+    <option value="50">6000万 - RM50</option>
+    <option value="70">8000万 - RM70</option>
+    <option value="11.88">金条2根 - RM11.88</option>
+    <option value="18.88">金条4根 - RM18.88</option>
+    <option value="28.88">金条6根 - RM28.88</option>
+  </select>
+
+  <input type="number" id="qty" placeholder="输入数量">
+
+  <br>
+
+  <button onclick="calc()">计算价格</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<div class="box">
+  <h2>扫码联系下单</h2>
+  <p>客服：105997283</p>
+  <p>（把你的二维码放这里）</p>
+</div>
+
+<script>
+function calc(){
+  let price = document.getElementById("service").value;
+  let qty = document.getElementById("qty").value;
+  let total = price * qty;
+  document.getElementById("result").innerText = "总价：RM " + total;
+}
+</script>
+
 </body>
 </html>
