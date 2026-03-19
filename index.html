@@ -332,6 +332,30 @@ setInterval(()=>{
 
 },5000);
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBXfIjGQ_0H9EiLbGToAr2VvHi0_3zF2fc",
+  authDomain: "ysclub-cdcf0.firebaseapp.com",
+  projectId: "ysclub-cdcf0",
+  storageBucket: "ysclub-cdcf0.firebasestorage.app",
+  messagingSenderId: "315864600299",
+  appId: "1:315864600299:web:bb9064cb8bd1580efff8ae"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.submitOrder = async function(orderData) {
+  try {
+    await addDoc(collection(db, "orders"), orderData);
+    console.log("已存🔥");
+  } catch (e) {
+    console.error("失败❌", e);
+  }
+};
+</script>
 </body>
 </html>
