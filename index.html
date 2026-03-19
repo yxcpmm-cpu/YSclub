@@ -277,8 +277,12 @@ z-index:1000;
 let selectedProduct = "";
 let currentPrice = "";
 
-function showForm(product){
-  document.getElementById("selected").innerText = product;
+function selectOrder(order, price){
+  selectedProduct = order;
+  currentPrice = price;
+
+  document.getElementById("order").value = order;
+  document.getElementById("price").value = price;
 }
 
   document.getElementById("order").value = order;
@@ -286,6 +290,7 @@ function showForm(product){
 }
 
 function showForm(product){
+selectedProduct = product;
   document.getElementById("selected").innerText = product;
 }
   document.getElementById("orderForm").style.display = "block";
@@ -293,6 +298,7 @@ function showForm(product){
 }
 
 function showForm(product){
+selectedProduct = product;
   document.getElementById("selected").innerText = product;
 }
     document.getElementById("orderForm").style.display = "block";
