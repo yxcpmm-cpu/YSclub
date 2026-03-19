@@ -277,9 +277,9 @@ z-index:1000;
 let selectedProduct = "";
 let currentPrice = "";
 
-function selectOrder(order, price){
-  selectedProduct = order;
-  currentPrice = price;
+function showForm(product){
+  document.getElementById("selected").innerText = product;
+}
 
   document.getElementById("order").value = order;
   document.getElementById("price").value = price;
