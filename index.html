@@ -3,335 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>电竞下单</title>
+<title>YS电竞下单</title>
 
 <style>
 body{
-    margin:0;
-    background:linear-gradient(180deg,#000,#0a0a0a);
-    color:#fff;
-    font-family:Arial;
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(180deg,#000,#0a0a0a);
+  color:#fff;
+}
+
+/* 顶部LOGO */
+.header{
+  text-align:center;
+  padding:20px;
 }
 
 .header img{
-    width:100%;
-    filter:brightness(0.8);
+  width:150px;
+  filter: drop-shadow(0 0 10px #00ccff);
 }
 
-.menu{
-    display:flex;
-    justify-content:space-around;
-    padding:12px;
-    font-size:18px;
-    background:#0d0d0d;
-    border-bottom:1px solid #222;
-}
-
-.title{
-    color:#FFD700;
-    font-size:28px;
-    margin:20px;
-    font-weight:bold;
-}
-
+/* 卡片 */
 .card{
-    background:linear-gradient(145deg,#111,#1c1c1c);
-    margin:15px;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 10px rgba(255,215,0,0.1);
-    transition:0.3s;
+  background:#111;
+  margin:15px;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 0 10px #00ccff33;
 }
 
-.card:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 20px rgba(255,215,0,0.3);
+/* 标题 */
+.title{
+  font-size:18px;
+  margin-bottom:10px;
+  color:#00ccff;
 }
 
-.price{
-    color:#FFD700;
-    font-size:22px;
-    margin-top:5px;
+/* 每一行 */
+.item{
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
 }
 
-.btn{
-    background:linear-gradient(90deg,#FFD700,#ffcc00);
-    color:#000;
-    padding:12px;
-    text-align:center;
-    border-radius:12px;
-    margin-top:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.form{
-    display:none;
-    background:linear-gradient(145deg,#111,#1a1a1a);
-    margin:15px;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 15px rgba(255,215,0,0.15);
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin:12px 0;
-    border:none;
-    border-radius:10px;
-    background:#0d0d0d;
-    color:#fff;
-    outline:none;
-    font-size:15px;
-}
-
-.submit{
-    background:linear-gradient(90deg,#FFD700,#ffcc00);
-    color:#000;
-    padding:14px;
-    text-align:center;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    margin-top:10px;
+/* 按钮 */
+button{
+  width:90%;
+  margin:20px auto;
+  display:block;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#00ccff;
+  color:#000;
+  font-size:16px;
+  font-weight:bold;
+  box-shadow:0 0 10px #00ccff;
 }
 </style>
+
 </head>
 
 <body>
 
+<!-- LOGO -->
 <div class="header">
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+  <img src="logo.png">
 </div>
 
-<div class="menu">
-<div>🎮 护航</div>
-</div>
-
-<div class="title">百万单</div>
-
+<!-- 百万单 -->
 <div class="card">
-<div>300万</div>
-<div class="price">RM3</div>
-<div class="btn" onclick="showForm('300万 RM3')">下单</div>
+  <div class="title">百万单</div>
+  <div class="item"><span>300万</span><span>RM3</span></div>
+  <div class="item"><span>600万</span><span>RM6</span></div>
+  <div class="item"><span>900万</span><span>RM9</span></div>
 </div>
 
+<!-- 千万单 -->
 <div class="card">
-<div>600万</div>
-<div class="price">RM6</div>
-<div class="btn" onclick="showForm('600万 RM6')">下单</div>
+  <div class="title">千万单</div>
+  <div class="item"><span>1000万</span><span>RM9</span></div>
+  <div class="item"><span>2000万</span><span>RM18</span></div>
+  <div class="item"><span>3000万</span><span>RM27</span></div>
 </div>
 
-<div class="card">
-<div>900万</div>
-<div class="price">RM9</div>
-<div class="btn" onclick="showForm('900万 RM9')">下单</div>
-</div>
-
-<!-- 表单 -->
-<div class="form" id="orderForm">
-<h3>填写资料</h3>
-
-<!-- ✅ 新增订单编号 -->
-<div style="margin-bottom:10px;color:#FFD700;">
-订单编号：<span id="orderId">YS0000</span>
-</div>
-
-<!-- ✅ 新增数量 -->
-<div style="margin:10px 0;">
-数量：
-<button onclick="changeQty(-1)">-</button>
-<span id="qty">1</span>
-<button onclick="changeQty(1)">+</button>
-</div>
-
-<input type="text" id="gameId" placeholder="游戏ID">
-<input type="text" id="name" placeholder="你的名字">
-<input type="text" id="contact" placeholder="联系方式">
-
-<div class="submit" onclick="submitOrder()">提交订单</div>
-
-<!-- ✅ 新增复制 -->
-<div class="btn" onclick="copyOrder()" style="background:#333;color:#fff;">
-复制订单信息
-</div>
-
-</div>
-
-<!-- 假订单 -->
-<div id="fakeOrders" style="
-position:fixed;
-bottom:20px;
-left:20px;
-background:#111;
-padding:10px 15px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(255,215,0,0.3);
-font-size:14px;
-display:none;
-">
-有人刚刚下单🔥
-</div>
-
-<!-- 加载 -->
-<div id="loading" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-color:#FFD700;
-font-size:20px;
-z-index:999;
-">
-下单中...
-</div>
-
-<!-- 成功 -->
-<div id="success" style="
-display:none;
-position:fixed;
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#111;
-padding:20px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(0,255,0,0.5);
-color:#0f0;
-font-size:18px;
-z-index:1000;
-">
-下单成功 ✅
-</div>
-
-<!-- ✅ 客服按钮 -->
-<div onclick="contact()" style="
-position:fixed;
-right:15px;
-bottom:80px;
-background:#25D366;
-color:#fff;
-padding:12px 15px;
-border-radius:50px;
-cursor:pointer;
-z-index:999;
-">
-联系客服
-</div>
+<!-- 下单按钮 -->
+<button onclick="order()">立即下单</button>
 
 <script>
-let selectedProduct = "";
-let qty = 1;
-let price = 0;
+function order(){
+  let name = prompt("请输入你的名字：");
+  let order = prompt("请输入你要的订单（例如：900万）：");
 
-function showForm(product){
-    selectedProduct = product;
-    document.getElementById("orderForm").style.display = "block";
-    window.scrollTo(0,document.body.scrollHeight);
-
-    let p = product.match(/RM(\d+)/);
-    price = p ? parseInt(p[1]) : 0;
-
-    qty = 1;
-    document.getElementById("qty").innerText = qty;
-
-    generateOrderId();
+  if(name && order){
+    alert("下单成功🔥\n\n名字："+name+"\n订单："+order);
+  }else{
+    alert("请填写完整❌");
+  }
 }
-
-function changeQty(n){
-    qty += n;
-    if(qty < 1) qty = 1;
-    document.getElementById("qty").innerText = qty;
-}
-
-function generateOrderId(){
-    let num = Math.floor(Math.random()*9000+1000);
-    document.getElementById("orderId").innerText = "YS" + num;
-}
-
-function copyOrder(){
-    let id = document.getElementById("gameId").value;
-    let name = document.getElementById("name").value;
-    let contact = document.getElementById("contact").value;
-
-    let text = `订单:${selectedProduct}
-数量:${qty}
-总价:RM${price*qty}
-ID:${id}
-名字:${name}
-联系方式:${contact}`;
-
-    navigator.clipboard.writeText(text);
-    alert("已复制！");
-}
-
-function contact(){
-    window.open("https://wa.me/601165268227");
-}
-
-function submitOrder(){
-    let id = document.getElementById("gameId").value;
-    let name = document.getElementById("name").value;
-    let contact = document.getElementById("contact").value;
-
-    if(!id || !name || !contact){
-        alert("请填写完整资料！");
-        return;
-    }
-
-    document.getElementById("loading").style.display = "flex";
-
-    setTimeout(()=>{
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("success").style.display = "block";
-
-        setTimeout(()=>{
-            document.getElementById("success").style.display = "none";
-
-            let msg = `订单:%0A商品:${selectedProduct}%0A数量:${qty}%0A总价:RM${price*qty}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
-
- submitOrder({
-  游戏ID: id,
-  名字: name,
-  联系方式: contact,
-  商品: selectedProduct,
-  数量: qty,
-  总价: "RM" + (price * qty),
-  时间: new Date().toLocaleString()
-});
-         window.open("https://wa.me/601165268227?text=" + msg);
-
-            document.getElementById("gameId").value="";
-            document.getElementById("name").value="";
-            document.getElementById("contact").value="";
-
-        },1500);
-
-    },1500);
-}
-
-// 假订单
-setInterval(()=>{
-    let box = document.getElementById("fakeOrders");
-    box.style.display = "block";
-
-    let list = ["玩家A","玩家B","玩家C","玩家D"];
-    let random = list[Math.floor(Math.random()*list.length)];
-
-    box.innerText = random + " 刚刚下单成功🔥";
-
-    setTimeout(()=>{
-        box.style.display = "none";
-    },3000);
-
-},5000);
 </script>
-</body>
 
+</body>
 </html>
