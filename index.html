@@ -288,7 +288,10 @@ function selectOrder(order, price){
 
 function showForm(product){
     selectedProduct = product;
-    document.getElementById("selected").innerText = product;
+    let selectedEl = document.getElementById("selected");
+if(selectedEl){
+    selectedEl.innerText = product;
+}
 
     document.getElementById("orderForm").style.display = "block";
     window.scrollTo(0, document.body.scrollHeight);
