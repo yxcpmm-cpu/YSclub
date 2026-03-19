@@ -2,179 +2,146 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>YS CLUB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电竞下单</title>
 
 <style>
 body{
-  margin:0;
-  font-family:Arial;
-  background:#0b0b0b;
-  color:#fff;
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial;
 }
 
-/* 顶部 */
-.header{
-  padding:20px;
-  text-align:center;
-  font-size:26px;
-  font-weight:bold;
-  background:#111;
+.header img{
+    width:100%;
 }
 
-/* 分类 */
+.menu{
+    display:flex;
+    justify-content:space-around;
+    padding:10px;
+    font-size:18px;
+}
+
 .title{
-  color:gold;
-  font-size:22px;
-  margin:20px;
+    color:#FFD700;
+    font-size:26px;
+    margin:20px;
 }
 
-/* 卡片 */
 .card{
-  background:#111;
-  margin:15px;
-  padding:15px;
-  border-radius:15px;
-  box-shadow:0 0 10px #000;
+    background:#1a1a1a;
+    margin:15px;
+    padding:20px;
+    border-radius:15px;
 }
 
 .price{
-  color:gold;
-  font-size:18px;
-  margin-top:5px;
+    color:#FFD700;
+    font-size:20px;
 }
 
-/* 按钮 */
 .btn{
-  margin-top:10px;
-  background:gold;
-  color:#000;
-  padding:10px;
-  text-align:center;
-  border-radius:10px;
-  font-weight:bold;
+    background:#FFD700;
+    color:#000;
+    padding:10px;
+    text-align:center;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
 }
 
-/* 客服 */
-.kefu{
-  position:fixed;
-  right:15px;
-  bottom:20px;
-  background:gold;
-  color:#000;
-  padding:12px;
-  border-radius:50px;
-  font-weight:bold;
-}
-
-/* 弹窗 */
-#orderBox{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.7);
-}
-
-.box{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  background:#111;
-  padding:20px;
-  border-radius:20px 20px 0 0;
+.form{
+    display:none;
+    background:#111;
+    margin:15px;
+    padding:20px;
+    border-radius:15px;
 }
 
 input{
-  width:100%;
-  margin:8px 0;
-  padding:10px;
-  border:none;
-  border-radius:10px;
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+
+.submit{
+    background:#FFD700;
+    color:#000;
+    padding:12px;
+    text-align:center;
+    border-radius:10px;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">YS 电竞俱乐部</div>
+<div class="header">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+</div>
+
+<div class="menu">
+<div>🎮 护航</div>
+<div>⚔ 装备</div>
+<div>💎 百万</div>
+<div>🔥 千万</div>
+</div>
 
 <div class="title">百万单</div>
 
 <div class="card">
-  300万
-  <div class="price">RM3</div>
-  <div class="btn" onclick="order('百万单','300万','RM3')">下单</div>
+<div>300万</div>
+<div class="price">RM3</div>
+<div class="btn" onclick="showForm('300万 RM3')">下单</div>
 </div>
 
 <div class="card">
-  600万
-  <div class="price">RM6</div>
-  <div class="btn" onclick="order('百万单','600万','RM6')">下单</div>
+<div>600万</div>
+<div class="price">RM6</div>
+<div class="btn" onclick="showForm('600万 RM6')">下单</div>
 </div>
 
-<!-- 客服 -->
-<div class="kefu" onclick="contact()">联系客服</div>
+<div class="title">千万单</div>
 
-<!-- 弹窗 -->
-<div id="orderBox">
-  <div class="box">
-    <h3 style="color:gold">填写订单</h3>
+<div class="card">
+<div>1000万</div>
+<div class="price">RM10</div>
+<div class="btn" onclick="showForm('1000万 RM10')">下单</div>
+</div>
 
-    <input id="gameId" placeholder="游戏ID">
-    <input id="server" placeholder="区服">
-    <input id="contactUser" placeholder="联系方式">
-    <input id="note" placeholder="备注（可不填）">
+<!-- 下单填写 -->
+<div class="form" id="orderForm">
+<h3>填写资料</h3>
 
-    <div class="btn" onclick="submitOrder()">提交订单</div>
-    <div class="btn" style="background:#333;color:#fff" onclick="closeBox()">取消</div>
-  </div>
+<input type="text" id="gameId" placeholder="游戏ID">
+<input type="text" id="name" placeholder="你的名字">
+<input type="text" id="contact" placeholder="联系方式">
+
+<div class="submit" onclick="submitOrder()">提交订单</div>
 </div>
 
 <script>
-let phone = "60123456789"; // ⚠️改成你的号码
-let currentOrder = {};
+let selectedProduct = "";
 
-// 打开弹窗
-function order(type,name,price){
-  currentOrder = {type,name,price};
-  document.getElementById("orderBox").style.display = "block";
+function showForm(product){
+    selectedProduct = product;
+    document.getElementById("orderForm").style.display = "block";
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
-// 提交订单
 function submitOrder(){
+    let id = document.getElementById("gameId").value;
+    let name = document.getElementById("name").value;
+    let contact = document.getElementById("contact").value;
 
-  let gameId = document.getElementById("gameId").value;
-  let server = document.getElementById("server").value;
-  let contactUser = document.getElementById("contactUser").value;
-  let note = document.getElementById("note").value || "无";
+    let msg = `订单:%0A商品:${selectedProduct}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
 
-  if(!gameId || !server || !contactUser){
-    alert("请填写完整资料");
-    return;
-  }
-
-  let text = `我要下单：
-分类：${currentOrder.type}
-项目：${currentOrder.name}
-价格：${currentOrder.price}
-游戏ID：${gameId}
-区服：${server}
-联系方式：${contactUser}
-备注：${note}`;
-
-  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
-
-  window.open(url, "_blank");
-}
-
-// 关闭
-function closeBox(){
-  document.getElementById("orderBox").style.display = "none";
-}
-
-// 客服
-function contact(){
-  window.open("https://wa.me/" + phone, "_blank");
+    window.open("https://wa.me/601165268227?text=" + msg);
 }
 </script>
 
