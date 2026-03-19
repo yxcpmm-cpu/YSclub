@@ -44,19 +44,12 @@ body{
     padding:20px;
     border-radius:18px;
     box-shadow:0 0 10px rgba(255,215,0,0.1);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 20px rgba(255,215,0,0.3);
 }
 
 /* 价格 */
 .price{
     color:#FFD700;
     font-size:22px;
-    margin-top:5px;
 }
 
 /* 按钮 */
@@ -69,21 +62,15 @@ body{
     margin-top:12px;
     cursor:pointer;
     font-weight:bold;
-    transition:0.2s;
-}
-
-.btn:active{
-    transform:scale(0.95);
 }
 
 /* 表单 */
 .form{
     display:none;
-    background:linear-gradient(145deg,#111,#1a1a1a);
+    background:#111;
     margin:15px;
     padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 15px rgba(255,215,0,0.15);
+    border-radius:15px;
 }
 
 /* 输入框 */
@@ -93,35 +80,18 @@ input{
     margin:12px 0;
     border:none;
     border-radius:10px;
-    background:#0d0d0d;
-    color:#fff;
-    outline:none;
-    font-size:15px;
-    box-shadow:inset 0 0 5px rgba(255,255,255,0.1);
-}
-
-input:focus{
-    box-shadow:0 0 8px rgba(255,215,0,0.6);
 }
 
 /* 提交按钮 */
 .submit{
-    background:linear-gradient(90deg,#FFD700,#ffcc00);
+    background:#FFD700;
     color:#000;
     padding:14px;
     text-align:center;
     border-radius:12px;
     cursor:pointer;
-    font-weight:bold;
-    margin-top:10px;
-    transition:0.2s;
-}
-
-.submit:active{
-    transform:scale(0.95);
 }
 </style>
-
 </head>
 
 <body>
@@ -149,20 +119,69 @@ input:focus{
 </div>
 
 <div class="card">
-  <div>900万</div>
-  <div class="price">RM9</div>
-  <div class="btn" onclick="showForm('900万 RM9')">下单</div>
+<div>600万</div>
+<div class="price">RM6</div>
+<div class="btn" onclick="showForm('900万 RM9')">下单</div>
 </div>
 
-<!-- 下单填写 -->
+<!-- 表单 -->
 <div class="form" id="orderForm">
 <h3>填写资料</h3>
-
 <input type="text" id="gameId" placeholder="游戏ID">
 <input type="text" id="name" placeholder="你的名字">
 <input type="text" id="contact" placeholder="联系方式">
-
 <div class="submit" onclick="submitOrder()">提交订单</div>
+</div>
+
+<!-- 假订单 -->
+<div id="fakeOrders" style="
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+padding:10px 15px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(255,215,0,0.3);
+font-size:14px;
+display:none;
+">
+有人刚刚下单🔥
+</div>
+
+<!-- 加载 -->
+<div id="loading" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+color:#FFD700;
+font-size:20px;
+z-index:999;
+">
+下单中...
+</div>
+
+<!-- 成功 -->
+<div id="success" style="
+display:none;
+position:fixed;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,255,0,0.5);
+color:#0f0;
+font-size:18px;
+z-index:1000;
+">
+下单成功 ✅
 </div>
 
 <script>
@@ -179,10 +198,44 @@ function submitOrder(){
     let name = document.getElementById("name").value;
     let contact = document.getElementById("contact").value;
 
-    let msg = `订单:%0A商品:${selectedProduct}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
+    if(!id || !name || !contact){
+        alert("请填写完整资料！");
+        return;
+    }
 
-    window.open("https://wa.me/601165268227?text=" + msg);
+    document.getElementById("loading").style.display = "flex";
+
+    setTimeout(()=>{
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("success").style.display = "block";
+
+        setTimeout(()=>{
+            document.getElementById("success").style.display = "none";
+
+            let msg = `订单:%0A商品:${selectedProduct}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
+
+            window.open("https://wa.me/60123456789?text=" + msg);
+
+        },1500);
+
+    },1500);
 }
+
+// 假订单滚动
+setInterval(()=>{
+    let box = document.getElementById("fakeOrders");
+    box.style.display = "block";
+
+    let list = ["玩家A","玩家B","玩家C","玩家D"];
+    let random = list[Math.floor(Math.random()*list.length)];
+
+    box.innerText = random + " 刚刚下单成功🔥";
+
+    setTimeout(()=>{
+        box.style.display = "none";
+    },3000);
+
+},5000);
 </script>
 
 </body>
