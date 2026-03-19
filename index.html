@@ -194,6 +194,25 @@ input:focus{
 <div class="submit" onclick="submitOrder()">提交订单</div>
 </div>
 
+<!-- 💳 收款码弹窗 -->
+<div id="popup">
+  <div class="popup-box">
+    <h3>请扫码付款</h3>
+
+    <img src="https://i.ibb.co/sdC1VSdH/1718848516907-100.jpg" width="200"><br><br>
+
+    <button onclick="paid()">我已付款</button>
+    <button onclick="closePay()">取消</button>
+  </div>
+</div>
+
+<!-- 🎉 成功 -->
+<div id="success">
+  ✅ 付款成功！订单已提交
+</div>
+
+<script>
+
 <!-- 假订单 -->
 <div id="fakeOrders" style="
 position:fixed;
