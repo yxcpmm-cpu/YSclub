@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+</head>
+
+<body style="background:#111;color:#fff;font-family:sans-serif">
+
+<h2>后台管理</h2>
+
+<select id="group">
+<option>百万单</option>
+<option>千万单</option>
+</select>
+
+<input id="name" placeholder="名称">
+<input id="price" placeholder="价格">
+
+<button onclick="add()">添加商品</button>
+<button onclick="save()">保存</button>
+
+<div id="list"></div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("shopData")) || {
+    "百万单":[],
+    "千万单":[]
+};
+
+function render(){
+    let html="";
+    for(let g in data){
+        html+=`<h3>${g}</h3>`;
+        data[g].forEach((item,i)=>{
+            html+=`${item.name} - ${item.price} 
+            <button onclick="del('${g}',${i})">删除</button><br>`;
+        });
+    }
+    document.getElementById("list").innerHTML=html;
+}
+
+function add(){
+    let g=document.getElementById("group").value;
+    let name=document.getElementById("name").value;
+    let price=document.getElementById("price").value;
+
+    data[g].push({name,price});
+    render();
+}
+
+function del(g,i){
+    data[g].splice(i,1);
+    render();
+}
+
+function save(){
+    localStorage.setItem("shopData",JSON.stringify(data));
+    alert("已保存！");
+}
+
+render();
+</script>
+
+</body>
+</html>
