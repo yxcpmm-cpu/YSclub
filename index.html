@@ -2,36 +2,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>YS CLUB</title>
+<title>YS电竞</title>
 
 <style>
 body{
     margin:0;
-    background:#f5f5f5;
+    background:#0c0c0c;
+    color:white;
     font-family:sans-serif;
 }
 
 /* 顶部 */
 .header{
-    background:linear-gradient(to right,#89c2ff,#bde0fe);
-    padding:20px;
+    background:url('https://images.unsplash.com/photo-1520975922203-b0b6c4b6c8c6');
+    background-size:cover;
+    padding:40px;
     text-align:center;
-    font-size:20px;
+    font-size:22px;
+    color:gold;
+    font-weight:bold;
 }
 
-/* 分类按钮 */
+/* 分类 */
 .tabs{
     display:flex;
     justify-content:space-around;
     margin:15px;
 }
 .tab{
-    background:white;
+    background:#1a1a1a;
     padding:10px;
     border-radius:10px;
+    color:gold;
 }
 
-/* 商品区 */
+/* 商品 */
 .products{
     display:flex;
     flex-wrap:wrap;
@@ -40,11 +45,11 @@ body{
 
 .card{
     width:45%;
-    background:white;
+    background:#111;
+    border:1px solid gold;
     border-radius:10px;
     margin:10px 0;
     overflow:hidden;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
 .card img{
@@ -56,10 +61,11 @@ body{
 }
 
 .price{
-    color:red;
+    color:#ffcc00;
     font-weight:bold;
 }
 
+/* 按钮 */
 .btn{
     display:block;
     background:gold;
@@ -74,28 +80,35 @@ body{
 
 <body>
 
-<div class="header">YS CLUB 首页</div>
+<div class="header">YS电竞价格系统</div>
 
 <div class="tabs">
-    <div class="tab">地铁护航区</div>
-    <div class="tab">吃丹修仙</div>
-    <div class="tab">装备区</div>
+    <div class="tab">百万单</div>
+    <div class="tab">千万单</div>
+    <div class="tab">特殊单</div>
 </div>
 
 <div class="products">
 
     <div class="card">
         <img src="https://via.placeholder.com/300x150">
-        <p>冰河禁区 600万-1000万</p>
-        <p class="price">￥39.80</p>
-        <a href="order.html" class="btn">立即下单</a>
+        <p>300万</p>
+        <p class="price">RM3</p>
+        <a href="order.html?item=300万 RM3" class="btn">立即下单</a>
     </div>
 
     <div class="card">
         <img src="https://via.placeholder.com/300x150">
-        <p>荣都 666万-1500万</p>
-        <p class="price">￥48.80</p>
-        <a href="order.html" class="btn">立即下单</a>
+        <p>600万</p>
+        <p class="price">RM6</p>
+        <a href="order.html?item=600万 RM6" class="btn">立即下单</a>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150">
+        <p>900万</p>
+        <p class="price">RM9</p>
+        <a href="order.html?item=900万 RM9" class="btn">立即下单</a>
     </div>
 
 </div>
