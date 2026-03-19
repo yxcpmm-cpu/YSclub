@@ -286,13 +286,15 @@ function showForm(product){
 }
 
 function showForm(product){
-  selectedProduct = product;
+  document.getElementById("selected").innerText = product;
+}
   document.getElementById("orderForm").style.display = "block";
   window.scrollTo(0, document.body.scrollHeight);
 }
 
 function showForm(product){
-    selectedProduct = product;
+  document.getElementById("selected").innerText = product;
+}
     document.getElementById("orderForm").style.display = "block";
     window.scrollTo(0,document.body.scrollHeight);
 }
