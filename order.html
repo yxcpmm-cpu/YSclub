@@ -6,13 +6,14 @@
 
 <style>
 body{
-    background:#111;
+    background:#0c0c0c;
     color:white;
     text-align:center;
 }
 input,button{
     padding:10px;
     margin:10px;
+    width:200px;
 }
 button{
     background:gold;
@@ -26,11 +27,20 @@ button{
 
 <h2>提交订单</h2>
 
+<input id="item" placeholder="商品"><br>
 <input placeholder="游戏ID"><br>
-<input placeholder="订单内容"><br>
 <input placeholder="数量"><br>
 
-<button onclick="alert('下单成功')">提交</button>
+<button onclick="submitOrder()">提交</button>
+
+<script>
+const url = new URLSearchParams(window.location.search);
+document.getElementById("item").value = url.get("item") || "";
+
+function submitOrder(){
+    alert("下单成功！");
+}
+</script>
 
 </body>
 </html>
