@@ -275,6 +275,21 @@ z-index:1000;
 
 <script>
 let selectedProduct = "";
+let currentPrice = "";
+
+function selectOrder(order, price){
+  selectedProduct = order;
+  currentPrice = price;
+
+  document.getElementById("order").value = order;
+  document.getElementById("price").value = price;
+}
+
+function showForm(product){
+  selectedProduct = product;
+  document.getElementById("orderForm").style.display = "block";
+  window.scrollTo(0, document.body.scrollHeight);
+}
 
 function showForm(product){
     selectedProduct = product;
