@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>个人中心</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f5f7fb;
+}
+.header{
+  background:linear-gradient(180deg,#6ea8fe,#ffffff);
+  padding:20px;
+}
+.profile{
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.profile img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  margin-right:10px;
+}
+.card{
+  background:#fff;
+  margin:15px;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+.stats{
+  display:flex;
+  justify-content:space-between;
+  text-align:center;
+}
+.big{
+  color:#ff4d4f;
+  font-size:24px;
+}
+.bottom{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#fff;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="profile">
+<img src="https://via.placeholder.com/60">
+<div>
+<b>YS用户</b><br>
+单价：RM 10
+</div>
+</div>
+
+</div>
+
+<div class="card">
+<div class="big" id="total">RM 0</div>
+<p>个人收益</p>
+
+<div class="stats">
+<div>
+<p id="orders">0</p>
+<small>接单量</small>
+</div>
+
+<div>
+<p id="money">0</p>
+<small>接单额</small>
+</div>
+
+<div>
+<p id="profit">0</p>
+<small>抽成</small>
+</div>
+</div>
+
+</div>
+
+<div class="bottom">
+<div onclick="go('index.html')">首页</div>
+<div onclick="go('order.html')">点单</div>
+<div><b>我的</b></div>
+</div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let total=0;
+orders.forEach(o=>total+=o.total);
+
+document.getElementById("total").innerText="RM "+total;
+document.getElementById("orders").innerText=orders.length;
+document.getElementById("money").innerText=total;
+document.getElementById("profit").innerText=(total*0.1).toFixed(2);
+
+function go(p){
+  window.location.href=p;
+}
+</script>
+
+</body>
+</html>
