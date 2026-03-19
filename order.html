@@ -2,118 +2,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>YS电竞点单</title>
-
+<title>点单</title>
 <style>
 body{
-  margin:0;
-  font-family:Arial;
-  background:#f5f7fb;
+    background:#111;
+    color:white;
+    font-family:sans-serif;
+    text-align:center;
 }
-h1{
-  text-align:center;
-  padding:15px;
-  background:#6ea8fe;
-  color:#fff;
+.box{
+    margin-top:50px;
 }
-.card{
-  background:#fff;
-  margin:15px;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 5px 10px rgba(0,0,0,0.1);
-}
-select,input,button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
+input,select{
+    padding:10px;
+    margin:10px;
+    width:200px;
 }
 button{
-  background:#6ea8fe;
-  color:#fff;
-  border:none;
-}
-.result{
-  margin-top:10px;
-  color:#ff4d4f;
-}
-.bottom{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#fff;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
+    padding:10px 20px;
+    background:gold;
+    border:none;
 }
 </style>
-
 </head>
 
 <body>
 
-<h1>点单系统</h1>
+<h2>点单系统</h2>
 
-<div class="card">
+<div class="box">
+    <input placeholder="游戏ID"><br>
+    
+    <select>
+        <option>百万单</option>
+        <option>千万单</option>
+        <option>特殊单</option>
+    </select><br>
 
-<select id="service">
-<option value="3">300万 - RM3</option>
-<option value="6">600万 - RM6</option>
-<option value="9">900万 - RM9</option>
-<option value="10">1000万 - RM10</option>
-<option value="28">2000万 - RM28</option>
-<option value="35">4000万 - RM35</option>
-<option value="50">6000万 - RM50</option>
-<option value="70">8000万 - RM70</option>
-<option value="11.88">金条2根 - RM11.88</option>
-<option value="18.88">金条4根 - RM18.88</option>
-<option value="28.88">金条6根 - RM28.88</option>
-</select>
+    <input placeholder="数量"><br>
 
-<input type="number" id="qty" placeholder="输入数量">
-
-<button onclick="add()">提交订单</button>
-
-<div class="result" id="result"></div>
-
+    <button onclick="alert('提交成功')">提交订单</button>
 </div>
-
-<div class="bottom">
-<div onclick="go('index.html')">首页</div>
-<div><b>点单</b></div>
-<div onclick="go('user.html')">我的</div>
-</div>
-
-<script>
-function go(p){
-  window.location.href=p;
-}
-
-function add(){
-  let price=document.getElementById("service").value;
-  let qty=document.getElementById("qty").value;
-
-  if(!qty){
-    alert("请输入数量");
-    return;
-  }
-
-  let total=price*qty;
-
-  let orders = JSON.parse(localStorage.getItem("orders"))||[];
-
-  orders.push({
-    total:total,
-    time:new Date().toLocaleString()
-  });
-
-  localStorage.setItem("orders",JSON.stringify(orders));
-
-  document.getElementById("result").innerText="下单成功 RM "+total;
-}
-</script>
 
 </body>
 </html>
