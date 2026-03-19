@@ -2,47 +2,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>点单</title>
+<title>下单</title>
+
 <style>
 body{
     background:#111;
     color:white;
-    font-family:sans-serif;
     text-align:center;
 }
-.box{
-    margin-top:50px;
-}
-input,select{
+input,button{
     padding:10px;
     margin:10px;
-    width:200px;
 }
 button{
-    padding:10px 20px;
     background:gold;
     border:none;
 }
 </style>
+
 </head>
 
 <body>
 
-<h2>点单系统</h2>
+<h2>提交订单</h2>
 
-<div class="box">
-    <input placeholder="游戏ID"><br>
-    
-    <select>
-        <option>百万单</option>
-        <option>千万单</option>
-        <option>特殊单</option>
-    </select><br>
+<input placeholder="游戏ID"><br>
+<input placeholder="订单内容"><br>
+<input placeholder="数量"><br>
 
-    <input placeholder="数量"><br>
-
-    <button onclick="alert('提交成功')">提交订单</button>
-</div>
+<button onclick="alert('下单成功')">提交</button>
 
 </body>
 </html>
