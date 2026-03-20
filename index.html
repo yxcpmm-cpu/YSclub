@@ -1,336 +1,151 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>电竞下单</title>
+<title>YS电竞下单</title>
 
 <style>
 body{
-    margin:0;
-    background:linear-gradient(180deg,#000,#0a0a0a);
+    background:#2b0d4d;
+    font-family:sans-serif;
     color:#fff;
-    font-family:Arial;
+    padding:10px;
 }
 
-.header img{
-    width:100%;
-    filter:brightness(0.8);
-}
-
-.menu{
-    display:flex;
-    justify-content:space-around;
-    padding:12px;
-    font-size:18px;
-    background:#0d0d0d;
-    border-bottom:1px solid #222;
-}
-
-.title{
-    color:#FFD700;
-    font-size:28px;
-    margin:20px;
-    font-weight:bold;
-}
-
-.card{
-    background:linear-gradient(145deg,#111,#1c1c1c);
-    margin:15px;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 10px rgba(255,215,0,0.1);
-}
-
-.price{
-    color:#FFD700;
-    font-size:22px;
-}
-
-.btn{
-    background:linear-gradient(90deg,#FFD700,#ffcc00);
-    color:#000;
-    padding:12px;
-    text-align:center;
-    border-radius:12px;
-    margin-top:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.form{
-    display:none;
-    background:#111;
-    margin-top:15px;
+/* 表单卡片 */
+.form-box{
+    background:linear-gradient(180deg,#6a00ff,#3b0070);
     padding:15px;
-    border-radius:12px;
+    border-radius:15px;
 }
 
-input{
+/* 输入框 */
+.input{
     width:100%;
     padding:10px;
     margin:8px 0;
     border:none;
-    border-radius:8px;
-    background:#0d0d0d;
-    color:#fff;
+    border-radius:10px;
 }
 
-.submit{
-    background:#FFD700;
+/* 性别 */
+.gender{
+    margin:10px 0;
+}
+
+/* 数量 */
+.qty{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+/* 付款 */
+.pay{
+    background:#fff;
     color:#000;
-    padding:12px;
-    text-align:center;
+    padding:10px;
     border-radius:10px;
-    cursor:pointer;
+    margin-top:10px;
+}
+
+/* 底部 */
+.bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+}
+
+.total{
+    color:#ff4d4d;
     font-weight:bold;
+}
+
+.btn{
+    background:linear-gradient(90deg,#a64dff,#ff00cc);
+    padding:10px 20px;
+    border-radius:20px;
+    cursor:pointer;
 }
 </style>
 </head>
 
-<!-- 🔥 公告栏 -->
-<div class="notice">
-    <div class="notice-text">
-        📢 欢迎来到YS电竞俱乐部｜24小时营业｜下单请填写正确资料｜客服随时在线 🔥🔥🔥
-    </div>
-</div>
-
-<style>
-.notice {
-    width: 100%;
-    overflow: hidden;
-    background: linear-gradient(90deg, #5f00ff, #9b00ff);
-    border-radius: 20px;
-    padding: 10px 0;
-    margin: 10px 0;
-    box-shadow: 0 0 15px #a020ff;
-}
-
-.notice-text {
-    display: inline-block;
-    white-space: nowrap;
-    color: #fff;
-    font-size: 14px;
-    animation: scroll 10s linear infinite;
-}
-
-/* 🔥 跑马灯动画 */
-@keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-</style>
-
 <body>
 
-<div class="header">
-<img src="https://i.ibb.co/vxNwFB1p/file-000000003c94720ba60156c57682c8a1.png">
+<div class="form-box">
+
+<h3>确认订单</h3>
+
+<input class="input" id="gameId" placeholder="请输入游戏ID">
+<input class="input" id="name" placeholder="请输入名字">
+<input class="input" id="rank" placeholder="请输入段位">
+
+<div class="gender">
+    性别：
+    <label><input type="radio" name="sex" value="男">男</label>
+    <label><input type="radio" name="sex" value="女">女</label>
 </div>
 
-<div class="menu">
-<div>YS电竞护航🎮</div>
+<input class="input" id="note" placeholder="备注">
+
+<!-- 数量 -->
+<div class="qty">
+    数量：
+    <button onclick="changeQty(-1)">-</button>
+    <span id="qty">1</span>
+    <button onclick="changeQty(1)">+</button>
 </div>
 
-<div class="title">百万单</div>
-
-<!-- 300万 -->
-<div class="card">
-<div>300万</div>
-<div class="price">RM3</div>
-<div class="btn" onclick="toggleForm('f300')">下单</div>
-
-<div class="form" id="f300">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
-</div>
+<!-- 付款 -->
+<div class="pay">
+    <label><input type="radio" name="pay" checked> TNG / DuitNow</label><br>
+    <label><input type="radio" name="pay"> 联系客服</label>
 </div>
 
-<!-- 600万 -->
-<div class="card">
-<div>600万</div>
-<div class="price">RM6</div>
-<div class="btn" onclick="toggleForm('f600')">下单</div>
-
-<div class="form" id="f600">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('600万','RM6',this)">提交订单</div>
-</div>
+<!-- 底部 -->
+<div class="bottom">
+    <div class="total">总价：RM <span id="total">3</span></div>
+    <div class="btn" onclick="submitOrder()">确认下单</div>
 </div>
 
-<!-- 900万 -->
-<div class="card">
-<div>900万</div>
-<div class="price">RM9</div>
-<div class="btn" onclick="toggleForm('f900')">下单</div>
-
-<div class="form" id="f900">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('900万','RM9',this)">提交订单</div>
-</div>
-</div>
-
-<div class="title">千万单</div>
-
-<!-- 1000万 -->
-<div class="card">
-<div>1000万</div>
-<div class="price">RM10</div>
-<div class="btn" onclick="toggleForm('f1000')">下单</div>
-
-<div class="form" id="f1000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('1000万','RM10',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 2000万 -->
-<div class="card">
-<div>2000万</div>
-<div class="price">RM28</div>
-<div class="btn" onclick="toggleForm('f2000')">下单</div>
-
-<div class="form" id="f2000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('2000万','RM28',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 4000万 -->
-<div class="card">
-<div>4000万</div>
-<div class="price">RM35</div>
-<div class="btn" onclick="toggleForm('f4000')">下单</div>
-
-<div class="form" id="f4000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('4000万','RM35',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 6000万 -->
-<div class="card">
-<div>6000万</div>
-<div class="price">RM50</div>
-<div class="btn" onclick="toggleForm('f6000')">下单</div>
-
-<div class="form" id="f6000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('6000万','RM50',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 8000万 -->
-<div class="card">
-<div>8000万</div>
-<div class="price">RM80</div>
-<div class="btn" onclick="toggleForm('f8000')">下单</div>
-
-<div class="form" id="f8000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('8000万','RM80',this)">提交订单</div>
-</div>
-</div>
-
-<div class="title">赌狗单（无累计无上限）</div>
-
-<!-- 金条2根 -->
-<div class="card">
-<div>金条2根</div>
-<div class="price">RM11.88</div>
-<div class="btn" onclick="toggleForm('gold2')">下单</div>
-
-<div class="form" id="gold2">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('金条2根','RM11.88',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 金条4根 -->
-<div class="card">
-<div>金条4根</div>
-<div class="price">RM18.88</div>
-<div class="btn" onclick="toggleForm('gold4')">下单</div>
-
-<div class="form" id="gold4">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('金条4根','RM18.88',this)">提交订单</div>
-</div>
-</div>
-
-<!-- 金条6根 -->
-<div class="card">
-<div>金条6根</div>
-<div class="price">RM28.88</div>
-<div class="btn" onclick="toggleForm('gold6')">下单</div>
-
-<div class="form" id="gold6">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('金条6根','RM28.88',this)">提交订单</div>
-</div>
-</div>
-<div class="title">苏尔南冲突[实验基地]</div>
-
-<div class="card">
-<div>1000万</div>
-<div class="price">RM14.88</div>
-<div class="btn" onclick="toggleForm('lab1000')">下单</div>
-
-<div class="form" id="lab1000">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="联系方式">
-<div class="submit" onclick="submitOrder('1000万','RM14.88',this)">提交订单</div>
-</div>
 </div>
 
 <script>
-function toggleForm(id){
-    let f = document.getElementById(id);
-    f.style.display = f.style.display === "block" ? "none" : "block";
+let price = 3; // 单价
+let qty = 1;
+
+function changeQty(num){
+    qty += num;
+    if(qty < 1) qty = 1;
+    document.getElementById("qty").innerText = qty;
+    updateTotal();
 }
 
-function submitOrder(product, price, btn){
-    let form = btn.parentElement;
-    let inputs = form.getElementsByTagName("input");
+function updateTotal(){
+    document.getElementById("total").innerText = price * qty;
+}
 
-    let id = inputs[0].value;
-    let name = inputs[1].value;
-    let contact = inputs[2].value;
+function submitOrder(){
+    let id = document.getElementById("gameId").value;
+    let name = document.getElementById("name").value;
+    let rank = document.getElementById("rank").value;
 
-    if(!id || !name || !contact){
-        alert("请填写完整资料！");
+    if(!id || !name){
+        alert("请填写完整！");
         return;
     }
 
-    let msg = `订单:%0A商品:${product}%0A价格:${price}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
+    let msg = `🎮YS电竞下单
+ID：${id}
+名字：${name}
+段位：${rank}
+数量：${qty}
+总价：RM${price * qty}`;
 
-    window.open("https://wa.me/601165268227?text=" + msg);
+    let phone = "60123456789";
+    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg));
 }
 </script>
 
