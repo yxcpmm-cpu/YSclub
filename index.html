@@ -339,6 +339,18 @@ function toggleForm(id){
     }
 }
 
+function showToast(text){
+    let t = document.getElementById("toast");
+    if(!t) return;
+
+    t.innerText = text;
+    t.style.display = "block";
+
+    setTimeout(()=>{
+        t.style.display = "none";
+    },2000);
+}
+
 </script>
 <div id="toast" style="
 position:fixed;
