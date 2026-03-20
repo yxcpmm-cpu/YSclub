@@ -61,17 +61,17 @@ body{
 .form{
     display:none;
     background:#111;
-    margin:15px;
-    padding:20px;
-    border-radius:18px;
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
 }
 
 input{
     width:100%;
-    padding:12px;
-    margin:10px 0;
+    padding:10px;
+    margin:8px 0;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
     background:#0d0d0d;
     color:#fff;
 }
@@ -79,16 +79,11 @@ input{
 .submit{
     background:#FFD700;
     color:#000;
-    padding:14px;
+    padding:12px;
     text-align:center;
-    border-radius:12px;
+    border-radius:10px;
     cursor:pointer;
     font-weight:bold;
-}
-
-#selectedInfo{
-    color:#FFD700;
-    margin-bottom:10px;
 }
 </style>
 </head>
@@ -105,93 +100,140 @@ input{
 
 <div class="title">百万单</div>
 
+<!-- 300万 -->
 <div class="card">
 <div>300万</div>
 <div class="price">RM3</div>
-<div class="btn" onclick="selectOrder('300万','RM3')">下单</div>
+<div class="btn" onclick="toggleForm('f300')">下单</div>
+
+<div class="form" id="f300">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 600万 -->
 <div class="card">
 <div>600万</div>
 <div class="price">RM6</div>
-<div class="btn" onclick="selectOrder('600万','RM6')">下单</div>
+<div class="btn" onclick="toggleForm('f600')">下单</div>
+
+<div class="form" id="f600">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('600万','RM6',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 900万 -->
 <div class="card">
 <div>900万</div>
 <div class="price">RM9</div>
-<div class="btn" onclick="selectOrder('900万','RM9')">下单</div>
+<div class="btn" onclick="toggleForm('f900')">下单</div>
+
+<div class="form" id="f900">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('900万','RM9',this)">提交订单</div>
+</div>
 </div>
 
 <div class="title">千万单</div>
 
+<!-- 1000万 -->
 <div class="card">
 <div>1000万</div>
 <div class="price">RM10</div>
-<div class="btn" onclick="selectOrder('1000万','RM10')">下单</div>
+<div class="btn" onclick="toggleForm('f1000')">下单</div>
+
+<div class="form" id="f1000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('1000万','RM10',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 2000万 -->
 <div class="card">
 <div>2000万</div>
 <div class="price">RM28</div>
-<div class="btn" onclick="selectOrder('2000万','RM28')">下单</div>
+<div class="btn" onclick="toggleForm('f2000')">下单</div>
+
+<div class="form" id="f2000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('2000万','RM28',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 4000万 -->
 <div class="card">
 <div>4000万</div>
 <div class="price">RM35</div>
-<div class="btn" onclick="selectOrder('4000万','RM35')">下单</div>
+<div class="btn" onclick="toggleForm('f4000')">下单</div>
+
+<div class="form" id="f4000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('4000万','RM35',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 6000万 -->
 <div class="card">
 <div>6000万</div>
 <div class="price">RM50</div>
-<div class="btn" onclick="selectOrder('6000万','RM50')">下单</div>
+<div class="btn" onclick="toggleForm('f6000')">下单</div>
+
+<div class="form" id="f6000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('6000万','RM50',this)">提交订单</div>
+</div>
 </div>
 
+<!-- 8000万 -->
 <div class="card">
 <div>8000万</div>
 <div class="price">RM80</div>
-<div class="btn" onclick="selectOrder('8000万','RM80')">下单</div>
+<div class="btn" onclick="toggleForm('f8000')">下单</div>
+
+<div class="form" id="f8000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('8000万','RM80',this)">提交订单</div>
 </div>
-
-<!-- 表单 -->
-<div class="form" id="orderForm">
-
-<div id="selectedInfo"></div>
-
-<input type="text" id="gameId" placeholder="游戏ID">
-<input type="text" id="name" placeholder="你的名字">
-<input type="text" id="contact" placeholder="联系方式">
-
-<div class="submit" onclick="submitOrder()">提交订单</div>
-
 </div>
 
 <script>
-let selectedProduct = "";
-let currentPrice = "";
-
-function selectOrder(order, price){
-    selectedProduct = order;
-    currentPrice = price;
-
-    document.getElementById("orderForm").style.display = "block";
-    document.getElementById("selectedInfo").innerText =
-    window.scrollTo(0, document.body.scrollHeight);
+function toggleForm(id){
+    let f = document.getElementById(id);
+    f.style.display = f.style.display === "block" ? "none" : "block";
 }
 
-function submitOrder(){
-    let id = document.getElementById("gameId").value;
-    let name = document.getElementById("name").value;
-    let contact = document.getElementById("contact").value;
+function submitOrder(product, price, btn){
+    let form = btn.parentElement;
+    let inputs = form.getElementsByTagName("input");
+
+    let id = inputs[0].value;
+    let name = inputs[1].value;
+    let contact = inputs[2].value;
 
     if(!id || !name || !contact){
         alert("请填写完整资料！");
         return;
     }
 
-    let msg = `订单:%0A商品:${selectedProduct}%0A价格:${currentPrice}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
+    let msg = `订单:%0A商品:${product}%0A价格:${price}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
 
     window.open("https://wa.me/601165268227?text=" + msg);
 }
