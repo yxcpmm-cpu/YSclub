@@ -307,22 +307,7 @@ let currentOrder = "";
 
 function submitOrder(product, price, btn){
     let form = btn.parentElement;
-    
-position:fixed;
-top:20%;
-left:50%;
-transform:translateX(-50%);
-background:#111;
-color:#FFD700;
-padding:15px 25px;
-border-radius:12px;
-font-weight:bold;
-display:none;
-z-index:9999;
-box-shadow:0 0 15px #FFD700;
-">
-提示
-</div>
+    let inputs = form.getElementsByTagName("input");
 
     let id = inputs[0].value;
     let name = inputs[1].value;
