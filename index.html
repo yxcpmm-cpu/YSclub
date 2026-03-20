@@ -325,7 +325,7 @@ function submitOrder(product, price, btn){
 }
 
 function paidSuccess(){
-    alert("✅ 已提交订单，请等待处理");
+    showToast("✅ 已提交订单，请等待处理");
     window.open("https://wa.me/601165268227?text=" + currentOrder);
     document.getElementById("payBox").style.display = "none";
 }
