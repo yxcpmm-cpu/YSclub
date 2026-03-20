@@ -214,6 +214,50 @@ input{
 </div>
 </div>
 
+<div class="title">赌狗单（无累计无上限）</div>
+
+<!-- 金条2根 -->
+<div class="card">
+<div>金条2根</div>
+<div class="price">RM11.88</div>
+<div class="btn" onclick="toggleForm('gold2')">下单</div>
+
+<div class="form" id="gold2">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('金条2根','RM11.88',this)">提交订单</div>
+</div>
+</div>
+
+<!-- 金条4根 -->
+<div class="card">
+<div>金条4根</div>
+<div class="price">RM18.88</div>
+<div class="btn" onclick="toggleForm('gold4')">下单</div>
+
+<div class="form" id="gold4">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('金条4根','RM18.88',this)">提交订单</div>
+</div>
+</div>
+
+<!-- 金条6根 -->
+<div class="card">
+<div>金条6根</div>
+<div class="price">RM28.88</div>
+<div class="btn" onclick="toggleForm('gold6')">下单</div>
+
+<div class="form" id="gold6">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="联系方式">
+<div class="submit" onclick="submitOrder('金条6根','RM28.88',this)">提交订单</div>
+</div>
+</div>
+
 <script>
 function toggleForm(id){
     let f = document.getElementById(id);
