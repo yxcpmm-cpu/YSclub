@@ -304,7 +304,6 @@ function toggleForm(id){
 }
 
 let currentOrder = "";
-alert("函数执行了");
 
 function submitOrder(product, price, btn){
     let form = btn.parentElement;
@@ -330,10 +329,16 @@ function paidSuccess(){
     window.open("https://wa.me/601165268227?text=" + currentOrder);
     document.getElementById("payBox").style.display = "none";
 }
-
-function closePay(){
-    document.getElementById("payBox").style.display = "none";
+    
+function toggleForm(id){
+    let f = document.getElementById(id);
+    if(f.style.display === "block"){
+        f.style.display = "none";
+    }else{
+        f.style.display = "block";
+    }
 }
+
 </script>
 <div id="toast" style="
 position:fixed;
