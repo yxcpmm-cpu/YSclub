@@ -9,20 +9,21 @@
 body{
     margin:0;
     font-family:Arial;
-    background:#5b3ea6;
+    background:#6b4bbd;
     color:#fff;
 }
 
-/* 顶部banner */
+/* banner轮播 */
 .banner{
-    padding:15px;
+    overflow:hidden;
+    margin:10px;
 }
 .banner img{
     width:100%;
     border-radius:15px;
 }
 
-/* 功能按钮 */
+/* 菜单 */
 .menu{
     display:flex;
     justify-content:space-around;
@@ -30,17 +31,17 @@ body{
     margin:15px 0;
 }
 .menu div{
-    font-size:14px;
+    font-size:13px;
 }
-.menu i{
+.menu span{
     display:block;
-    font-size:24px;
+    font-size:22px;
     margin-bottom:5px;
 }
 
 /* 公告 */
 .notice{
-    margin:10px 15px;
+    margin:10px;
     background:#ffffff33;
     padding:10px;
     border-radius:20px;
@@ -50,11 +51,11 @@ body{
 /* 标题 */
 .title{
     margin:15px;
-    font-size:20px;
+    font-size:18px;
     font-weight:bold;
 }
 
-/* 商品卡片 */
+/* 商品 */
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -88,6 +89,35 @@ body{
     margin-top:8px;
 }
 
+/* 弹窗 */
+.popup{
+    position:fixed;
+    bottom:-100%;
+    left:0;
+    width:100%;
+    background:#fff;
+    color:#000;
+    border-radius:20px 20px 0 0;
+    padding:15px;
+    transition:0.3s;
+}
+.popup.active{
+    bottom:0;
+}
+.popup input{
+    width:100%;
+    margin:5px 0;
+    padding:10px;
+}
+.submit{
+    background:#7b5cff;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
 /* 底部导航 */
 .nav{
     position:fixed;
@@ -104,22 +134,21 @@ body{
     font-size:12px;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- banner -->
+<!-- Banner -->
 <div class="banner">
     <img src="https://i.imgur.com/8Km9tLL.jpg">
 </div>
 
-<!-- 功能菜单 -->
+<!-- 菜单 -->
 <div class="menu">
-    <div><i>🏠</i>平台介绍</div>
-    <div><i>🎧</i>联系客服</div>
-    <div><i>📋</i>下单必看</div>
-    <div><i>⭐</i>招募打手</div>
+    <div><span>🏠</span>平台介绍</div>
+    <div><span>🎧</span>联系客服</div>
+    <div><span>📋</span>下单必看</div>
+    <div><span>⭐</span>招募打手</div>
 </div>
 
 <!-- 公告 -->
@@ -138,19 +167,28 @@ body{
         <div class="info">
             体验单 保底300W
             <div class="price">RM16.8</div>
-            <div class="btn" onclick="order('体验单')">下单</div>
+            <div class="btn" onclick="openForm('体验单')">下单</div>
         </div>
     </div>
 
     <div class="card">
         <img src="https://i.imgur.com/Vz81C7P.jpg">
         <div class="info">
-            保底350W 套装
+            保底350W 套餐
             <div class="price">RM19.9</div>
-            <div class="btn" onclick="order('350W套餐')">下单</div>
+            <div class="btn" onclick="openForm('350W套餐')">下单</div>
         </div>
     </div>
 
+</div>
+
+<!-- 弹窗 -->
+<div class="popup" id="popup">
+    <h3 id="title"></h3>
+    <input placeholder="游戏ID">
+    <input placeholder="你的名字">
+    <input placeholder="备注">
+    <div class="submit" onclick="submitOrder()">提交订单</div>
 </div>
 
 <!-- 底部导航 -->
@@ -162,8 +200,17 @@ body{
 </div>
 
 <script>
-function order(name){
-    alert("你选择了：" + name);
+let current = "";
+
+function openForm(name){
+    current = name;
+    document.getElementById("title").innerText = name;
+    document.getElementById("popup").classList.add("active");
+}
+
+function submitOrder(){
+    alert("已提交：" + current);
+    document.getElementById("popup").classList.remove("active");
 }
 </script>
 
