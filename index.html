@@ -355,8 +355,68 @@ function showToast(text){
         t.style.display = "none";
     },2000);
 }
+// ✅ 招募弹窗功能
+function openRecruit(){
+    document.getElementById("recruitBox").style.bottom = "0";
+}
+
+function closeRecruit(){
+    document.getElementById("recruitBox").style.bottom = "-100%";
+}
+
+function submitRecruit(){
+    let name = document.getElementById("r_name").value;
+    let id = document.getElementById("r_id").value;
+    let rank = document.getElementById("r_rank").value;
+
+    if(!name || !id || !rank){
+        showToast("❌请填写完整资料！");
+        return;
+    }
+
+    let msg = `招募报名:%0A名字:${name}%0AID:${id}%0A段位:${rank}`;
+    window.open("https://wa.me/601165268227?text=" + msg);
+
+    showToast("✅ 已提交报名！");
+    closeRecruit();
+}
 
 </script>
+<!-- ✅ 招募打手弹窗 -->
+<div id="recruitBox" style="
+position:fixed;
+bottom:-100%;
+left:0;
+width:100%;
+background:#fff;
+color:#000;
+padding:15px;
+border-radius:20px 20px 0 0;
+transition:0.3s;
+z-index:9999;
+">
+
+<h3>🔥 招募电竞打手</h3>
+
+<input id="r_name" placeholder="你的名字">
+<input id="r_id" placeholder="游戏ID">
+<input id="r_rank" placeholder="段位">
+
+<div onclick="submitRecruit()" style="
+background:#FFD700;
+padding:12px;
+text-align:center;
+border-radius:10px;
+margin-top:10px;
+">提交报名</div>
+
+<div onclick="closeRecruit()" style="
+text-align:center;
+margin-top:10px;
+color:red;
+">取消</div>
+
+</div>
 <div id="toast" style="
 position:fixed;
 top:20%;
