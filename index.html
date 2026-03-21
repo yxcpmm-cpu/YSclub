@@ -3,216 +3,374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YS电竞护航</title>
+<title>电竞下单</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
-    background:#6b4bbd;
+    background:linear-gradient(180deg,#000,#0a0a0a);
     color:#fff;
+    font-family:Arial;
 }
 
-/* banner轮播 */
-.banner{
-    overflow:hidden;
-    margin:10px;
-}
-.banner img{
+.header img{
     width:100%;
-    border-radius:15px;
+    filter:brightness(0.8);
 }
 
-/* 菜单 */
 .menu{
     display:flex;
     justify-content:space-around;
-    text-align:center;
-    margin:15px 0;
-}
-.menu div{
-    font-size:13px;
-}
-.menu span{
-    display:block;
-    font-size:22px;
-    margin-bottom:5px;
-}
-
-/* 公告 */
-.notice{
-    margin:10px;
-    background:#ffffff33;
-    padding:10px;
-    border-radius:20px;
-    text-align:center;
-}
-
-/* 标题 */
-.title{
-    margin:15px;
+    padding:12px;
     font-size:18px;
+    background:#0d0d0d;
+    border-bottom:1px solid #222;
+}
+
+.title{
+    color:#FFD700;
+    font-size:28px;
+    margin:20px;
     font-weight:bold;
 }
 
-/* 商品 */
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    padding:10px;
-}
 .card{
-    background:#fff;
-    color:#000;
-    border-radius:15px;
-    overflow:hidden;
+    background:linear-gradient(145deg,#111,#1c1c1c);
+    margin:15px;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 0 10px rgba(255,215,0,0.1);
 }
-.card img{
-    width:100%;
-    height:120px;
-    object-fit:cover;
-}
-.card .info{
-    padding:10px;
-}
+
 .price{
-    color:red;
+    color:#FFD700;
+    font-size:22px;
+}
+
+.btn{
+    background:linear-gradient(90deg,#FFD700,#ffcc00);
+    color:#000;
+    padding:12px;
+    text-align:center;
+    border-radius:12px;
+    margin-top:12px;
+    cursor:pointer;
     font-weight:bold;
 }
-.btn{
-    background:#7b5cff;
-    color:#fff;
-    text-align:center;
-    padding:8px;
-    border-radius:10px;
-    margin-top:8px;
-}
 
-/* 弹窗 */
-.popup{
-    position:fixed;
-    bottom:-100%;
-    left:0;
-    width:100%;
-    background:#fff;
-    color:#000;
-    border-radius:20px 20px 0 0;
+.form{
+    display:none;
+    background:#111;
+    margin-top:15px;
     padding:15px;
-    transition:0.3s;
-}
-.popup.active{
-    bottom:0;
-}
-.popup input{
-    width:100%;
-    margin:5px 0;
-    padding:10px;
-}
-.submit{
-    background:#7b5cff;
-    color:#fff;
-    text-align:center;
-    padding:10px;
-    border-radius:10px;
-    margin-top:10px;
+    border-radius:12px;
 }
 
-/* 底部导航 */
-.nav{
-    position:fixed;
-    bottom:0;
+input{
     width:100%;
-    background:#fff;
-    display:flex;
-    justify-content:space-around;
-    padding:10px 0;
-    color:#000;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+    background:#0d0d0d;
+    color:#fff;
 }
-.nav div{
+
+.submit{
+    background:#FFD700;
+    color:#000;
+    padding:12px;
     text-align:center;
-    font-size:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 </style>
 </head>
 
+<!-- 🔥 公告栏 -->
+<div class="notice">
+    <div class="notice-text">
+        📢 欢迎来到YS电竞俱乐部｜24小时营业｜下单请填写正确资料｜客服随时在线 🔥🔥🔥
+    </div>
+</div>
+
+<style>
+.notice {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #5f00ff, #9b00ff);
+    border-radius: 20px;
+    padding: 10px 0;
+    margin: 10px 0;
+    box-shadow: 0 0 15px #a020ff;
+}
+
+.notice-text {
+    display: inline-block;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 14px;
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+</style>
+
 <body>
 
-<!-- Banner -->
-<div class="banner">
-    <img src="https://i.imgur.com/8Km9tLL.jpg">
+<div class="header">
+<img src="https://i.ibb.co/vxNwFB1p/file-000000003c94720ba60156c57682c8a1.png">
 </div>
 
-<!-- 菜单 -->
 <div class="menu">
-    <div><span>🏠</span>平台介绍</div>
-    <div><span>🎧</span>联系客服</div>
-    <div><span>📋</span>下单必看</div>
-    <div><span>⭐</span>招募打手</div>
+<div>YS电竞护航🎮</div>
 </div>
 
-<!-- 公告 -->
-<div class="notice">
-📢 24小时营业中，禁止未成年人下单
+<div class="title">百万单💰</div>
+
+<!-- 300万 -->
+<div class="card">
+<div>300万</div>
+<div class="price">RM3</div>
+<div class="btn" onclick="toggleForm('f300')">下单</div>
+<div class="form" id="f300">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
+</div>
 </div>
 
-<!-- 标题 -->
-<div class="title">🔥 地铁保底专区</div>
-
-<!-- 商品 -->
-<div class="grid">
-
-    <div class="card">
-        <img src="https://i.imgur.com/QIrZWGIs.jpg">
-        <div class="info">
-            体验单 保底300W
-            <div class="price">RM16.8</div>
-            <div class="btn" onclick="openForm('体验单')">下单</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://i.imgur.com/Vz81C7P.jpg">
-        <div class="info">
-            保底350W 套餐
-            <div class="price">RM19.9</div>
-            <div class="btn" onclick="openForm('350W套餐')">下单</div>
-        </div>
-    </div>
-
+<!-- 600万 -->
+<div class="card">
+<div>600万</div>
+<div class="price">RM6</div>
+<div class="btn" onclick="toggleForm('f600')">下单</div>
+<div class="form" id="f600">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('600万','RM6',this)">提交订单</div>
+</div>
 </div>
 
-<!-- 弹窗 -->
-<div class="popup" id="popup">
-    <h3 id="title"></h3>
-    <input placeholder="游戏ID">
-    <input placeholder="你的名字">
-    <input placeholder="备注">
-    <div class="submit" onclick="submitOrder()">提交订单</div>
+<!-- 900万 -->
+<div class="card">
+<div>900万</div>
+<div class="price">RM9</div>
+<div class="btn" onclick="toggleForm('f900')">下单</div>
+<div class="form" id="f900">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('900万','RM9',this)">提交订单</div>
+</div>
 </div>
 
-<!-- 底部导航 -->
-<div class="nav">
-    <div>🏠<br>首页</div>
-    <div>📦<br>分类</div>
-    <div>💬<br>消息</div>
-    <div>👤<br>我的</div>
+<div class="title">千万单💰</div>
+
+<div class="card">
+<div>1000万</div>
+<div class="price">RM10</div>
+<div class="btn" onclick="toggleForm('f1000')">下单</div>
+<div class="form" id="f1000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('1000万','RM10',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>2000万</div>
+<div class="price">RM28</div>
+<div class="btn" onclick="toggleForm('f2000')">下单</div>
+<div class="form" id="f2000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('2000万','RM28',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>4000万</div>
+<div class="price">RM35</div>
+<div class="btn" onclick="toggleForm('f4000')">下单</div>
+<div class="form" id="f4000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('4000万','RM35',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>6000万</div>
+<div class="price">RM50</div>
+<div class="btn" onclick="toggleForm('f6000')">下单</div>
+<div class="form" id="f6000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('6000万','RM50',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>8000万</div>
+<div class="price">RM80</div>
+<div class="btn" onclick="toggleForm('f8000')">下单</div>
+<div class="form" id="f8000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('8000万','RM80',this)">提交订单</div>
+</div>
+</div>
+
+<div class="title">赌狗单🔥（无累计无上限）</div>
+
+<div class="card">
+<div>金条2根</div>
+<div class="price">RM11.88</div>
+<div class="btn" onclick="toggleForm('gold2')">下单</div>
+<div class="form" id="gold2">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('金条2根','RM11.88',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>金条4根</div>
+<div class="price">RM18.88</div>
+<div class="btn" onclick="toggleForm('gold4')">下单</div>
+<div class="form" id="gold4">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('金条4根','RM18.88',this)">提交订单</div>
+</div>
+</div>
+
+<div class="card">
+<div>金条6根</div>
+<div class="price">RM28.88</div>
+<div class="btn" onclick="toggleForm('gold6')">下单</div>
+<div class="form" id="gold6">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('金条6根','RM28.88',this)">提交订单</div>
+</div>
+</div>
+
+<div class="title">苏尔南冲突⚔️[实验基地]</div>
+
+<div class="card">
+<div>1000万</div>
+<div class="price">RM14.88</div>
+<div class="btn" onclick="toggleForm('lab1000')">下单</div>
+<div class="form" id="lab1000">
+<input placeholder="游戏ID">
+<input placeholder="你的名字">
+<input placeholder="备注">
+<div class="submit" onclick="submitOrder('1000万','RM14.88',this)">提交订单</div>
+</div>
+</div>
+
+<!-- 🔥 付款弹窗 -->
+<div id="payBox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+<div style="background:#111; padding:20px; border-radius:15px; text-align:center; width:90%; box-shadow:0 0 15px #FFD700;">
+<h3 style="color:#FFD700;">请付款</h3>
+<img src="https://i.ibb.co/1G6hLDQR/IMG-20260320-111720.jpg" style="width:220px; margin:15px 0; border-radius:10px;">
+<div style="color:#FFD700; font-size:20px;">金额：<span id="payAmount"></span></div>
+<div onclick="paidSuccess()" style="background:#FFD700; color:#000; padding:12px; border-radius:10px; margin-top:10px; cursor:pointer;">我已付款</div>
+<div onclick="closePay()" style="margin-top:10px; color:#aaa; cursor:pointer;">取消</div>
+</div>
 </div>
 
 <script>
-let current = "";
 
-function openForm(name){
-    current = name;
-    document.getElementById("title").innerText = name;
-    document.getElementById("popup").classList.add("active");
+function toggleForm(id){
+    let f = document.getElementById(id);
+    f.style.display = f.style.display === "block" ? "none" : "block";
 }
 
-function submitOrder(){
-    alert("已提交：" + current);
-    document.getElementById("popup").classList.remove("active");
+let currentOrder = "";
+
+function submitOrder(product, price, btn){
+    let form = btn.parentElement;
+    let inputs = form.getElementsByTagName("input");
+
+    let id = inputs[0].value;
+    let name = inputs[1].value;
+    let contact = inputs[2].value;
+
+    if(!id || !name || !contact){
+        showToast("❌请填写完整资料！");
+        return;
+    }
+
+    currentOrder = `订单:%0A商品:${product}%0A价格:${price}%0AID:${id}%0A名字:${name}%0A联系方式:${contact}`;
+
+    document.getElementById("payBox").style.display = "flex";
+    document.getElementById("payAmount").innerText = price;
 }
+
+function paidSuccess(){
+    showToast("✅ 已提交订单，请等待处理");
+    window.open("https://wa.me/601165268227?text=" + currentOrder);
+    document.getElementById("payBox").style.display = "none";
+}
+
+function closePay(){
+    document.getElementById("payBox").style.display = "none";
+}
+
+function toggleForm(id){
+    let f = document.getElementById(id);
+    if(f.style.display === "block"){
+        f.style.display = "none";
+    }else{
+        f.style.display = "block";
+    }
+}
+
+function showToast(text){
+    let t = document.getElementById("toast");
+    if(!t) return;
+
+    t.innerText = text;
+    t.style.display = "block";
+
+    setTimeout(()=>{
+        t.style.display = "none";
+    },2000);
+}
+
 </script>
-
+<div id="toast" style="
+position:fixed;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+color:#FFD700;
+padding:15px 25px;
+border-radius:12px;
+font-weight:bold;
+display:none;
+z-index:9999;
+box-shadow:0 0 15px #FFD700;
+">
+提示
+</div>
 </body>
 </html>
