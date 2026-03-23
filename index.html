@@ -470,6 +470,15 @@ function submitRecruit(){
     closeRecruit();
 }
 
+function openOrder(text){
+    document.getElementById("orderTitle").innerText = text;
+    document.getElementById("orderBox").style.display = "flex";
+}
+
+function closeOrder(){
+    document.getElementById("orderBox").style.display = "none";
+}
+
 </script>
 <!-- ✅ 招募打手弹窗 -->
 <div id="recruitBox" style="
