@@ -149,10 +149,28 @@ input{
 <div class="price">RM3</div>
 <div class="btn" onclick="toggleForm('f300')">下单</div>
 <div class="form" id="f300">
-<input placeholder="游戏ID">
-<input placeholder="你的名字">
-<input placeholder="备注">
+
+<select class="input">
+<option>请选择游戏大区</option>
+<option>微信区</option>
+<option>QQ区</option>
+</select>
+
+<input class="input" placeholder="中文游戏名">
+
+<input class="input" placeholder="数字编号">
+
+<input class="input" placeholder="段位">
+
+<div class="gender">
+<label><input type="radio" name="sex"> 男</label>
+<label><input type="radio" name="sex"> 女</label>
+</div>
+
+<input class="input" placeholder="备注">
+
 <div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
+
 </div>
 </div>
 
