@@ -145,43 +145,29 @@ input{
 
 <!-- 300万 -->
 <div class="card">
-<div>300万</div>
-<div class="price">RM3</div>
-<div class="btn"
-onclick="toggleForm('f300')">下单</div>
-<div class="form" id="f300">
 
-<input class="input" placeholder="中文游戏名">
+    <div class="card-img">
+        <img src="https://i.ibb.co/Q76t0GRL/file-000000003c94720ba60156c57682c8a1.png">
+    </div>
 
-<input class="input" placeholder="数字编号">
+    <div class="card-info">
+        <div class="name">300万</div>
+        <div class="price">RM3</div>
+    </div>
 
-<input class="input" placeholder="段位">
+    <div class="btn" onclick="toggleForm('f300')">下单</div>
 
-<input class="input" placeholder="备注">
+    <div class="form" id="f300">
+        <input placeholder="中文游戏名">
+        <input placeholder="数字编号">
+        <input placeholder="段位">
+        <input placeholder="备注">
 
-<div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
+        <div class="submit" onclick="submitOrder('300万','RM3',this)">
+            提交订单
+        </div>
+    </div>
 
-</div>
-</div>
-
-<!-- 600万 -->
-<div class="card">
-<div>600万</div>
-<div class="price">RM6</div>
-<div class="btn" onclick="toggleForm('f600')">下单</div>
-<div class="form" id="f600">
-
-<input class="input" placeholder="中文游戏名">
-
-<input class="input" placeholder="数字编号">
-
-<input class="input" placeholder="段位">
-
-<input class="input" placeholder="备注">
-
-<div class="submit" onclick="submitOrder('600万','RM6',this)">提交订单</div>
-
-</div>
 </div>
 
 <!-- 900万 -->
