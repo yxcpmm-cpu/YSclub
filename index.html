@@ -42,14 +42,6 @@ body{
     box-shadow:0 0 10px rgba(255,215,0,0.1);
 }
 
-.card img{
-    width:100%;
-    max-height:150px;
-    object-fit:cover;
-    border-radius:12px;
-    margin-bottom:10px;
-}
-
 .price{
     color:#FFD700;
     font-size:22px;
@@ -104,35 +96,6 @@ input{
     border:1px solid #FFD700;
 }
 
-.card-img{
-    width:100%;
-    height:120px;
-    overflow:hidden;
-    border-radius:12px;
-    margin-bottom:10px;
-}
-
-.card-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.card-info{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.name{
-    font-size:18px;
-}
-
-.price{
-    color:#FFD700;
-    font-size:20px;
-    font-weight:bold;
-}
 </style>
 </head>
 
@@ -183,29 +146,23 @@ input{
 
 <!-- 300万 -->
 <div class="card">
+<div>300万</div>
+<div class="price">RM3</div>
+<div class="btn"
+onclick="toggleForm('f300')">下单</div>
+<div class="form" id="f300">
 
-    <div class="card-img">
-        <img src="https://i.ibb.co/Q76t0GRL/file-000000003c94720ba60156c57682c8a1.png">
-    </div>
+<input class="input" placeholder="中文游戏名">
 
-    <div class="card-info">
-        <div class="name">300万</div>
-        <div class="price">RM3</div>
-    </div>
+<input class="input" placeholder="数字编号">
 
-    <div class="btn" onclick="toggleForm('f300')">下单</div>
+<input class="input" placeholder="段位">
 
-    <div class="form" id="f300">
-        <input placeholder="中文游戏名">
-        <input placeholder="数字编号">
-        <input placeholder="段位">
-        <input placeholder="备注">
+<input class="input" placeholder="备注">
 
-        <div class="submit" onclick="submitOrder('300万','RM3',this)">
-            提交订单
-        </div>
-    </div>
+<div class="submit" onclick="submitOrder('300万','RM3',this)">提交订单</div>
 
+</div>
 </div>
 
 <!-- 900万 -->
